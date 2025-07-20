@@ -11,19 +11,22 @@ OverviewThis project is a comprehensive e-commerce web application built on the 
 - **Custom Templates & Static Files:** Modern and responsive user interface.
 - **Scalable Structure:** Easily expandable for future growth and feature additions.
 
-## Project Structure| Folder/File                | Purpose                                                         |
-|----------------------------|-----------------------------------------------------------------|
-| `customer_checkout/`       | Handles the cart and checkout logic                             |
-| `customers/`               | Customer profiles, management, communication                    |
-| `delivery/`                | Order processing, delivery, and status tracking                 |
-| `login/`                   | User authentication and session management                      |
-| `products/`                | Product catalog and inventory management                        |
-| `shopping_with_django_main/` | Core Django settings, URLs, and main configuration              |
-| `static/`                  | Static files for frontend assets (CSS, JS, images)              |
-| `templates/`               | All HTML templates for rendering the UI                         |
-| `media/`                   | Stores uploaded files (user images, product pics, etc.)         |
-| `.gitignore`               | Ensures sensitive/environment-specific files aren’t tracked      |
-| `.gitattributes`           | Manages file handling rules across platforms                    |
+| Folder/File                | Purpose                                                       |
+|----------------------------|--------------------------------------------------------------|
+| `customer_checkout/`       | Handles cart and checkout logic                              |
+| `customers/`               | Customer profiles, management, and communication             |
+| `delivery/`                | Order processing, delivery, and status tracking              |
+| `login/`                   | User authentication and session management                   |
+| `products/`                | Product catalog and inventory management                     |
+| `shopping_with_django_main/` | Core Django settings, URLs, and config                      |
+| `static/`                  | Static frontend assets (CSS, JS, images)                     |
+| `templates/`               | HTML files for rendering the UI                              |
+| `media/`                   | Uploaded files (product images, user content)                |
+| `.gitignore`               | Excludes sensitive or unnecessary files from version control  |
+| `.gitattributes`           | Manages file handling rules across systems                   |
+| `db.sqlite3`               | Local database file (should be in `.gitignore`)              |
+| `myenv/`                   | Local Python environment (should be in `.gitignore`)         |
+
 | `db.sqlite3`               | Local database file (usually ignored in shared repos)           |
 | `myenv/`                   | Local Python environment (must be ignored in `.gitignore`)      |
 

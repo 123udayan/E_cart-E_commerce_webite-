@@ -1,5 +1,6 @@
 # Shopping Cart – Django Ecommerce Website
-OverviewThis project is a comprehensive e-commerce web application built on the Django framework. The admin can easily add, update, and manage products through a powerful dashboard. Customers can browse products, manage their carts, place orders, and receive notifications once their purchase is complete. The intuitive modular design and professional project structure allow for easy maintenance and future scalability.
+## Overview
+This project is a comprehensive e-commerce web application built on the Django framework. The admin can easily add, update, and manage products through a powerful dashboard. Customers can browse products, manage their carts, place orders, and receive notifications once their purchase is complete. The intuitive modular design and professional project structure allow for easy maintenance and future scalability.
 ## Key Features- 
 - **Admin Dashboard:** Add, update, and manage products and categories efficiently.
 - **Customer Checkout:** Smooth process for browsing, adding to cart, and checking out.

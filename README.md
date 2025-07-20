@@ -11,26 +11,6 @@ OverviewThis project is a comprehensive e-commerce web application built on the 
 - **Custom Templates & Static Files:** Modern and responsive user interface.
 - **Scalable Structure:** Easily expandable for future growth and feature additions.
 
-## Setup Instructions1. **Clone the Repository:**
-   ```sh
-  ```t clone 
-  ``` shopping_with_django
-  ````
-2. **Install Dependencies:**
-   ```
-  ```p install -r requirements```t
-   ```
-3. **Apply Migrations:**
-   ```
-  ```thon manage``` migrate
-  ````
-4. **Run the Development Server:**
-   ```
-   python```nage.py run```ver
-   ```
-5. **Access the Application:**  
-   Open your browser and go to `http://127.0.0.1:8000/`.
-
 ## Project Structure| Folder/File                | Purpose                                                         |
 |----------------------------|-----------------------------------------------------------------|
 | `customer_checkout/`       | Handles the cart and checkout logic                             |
@@ -47,17 +27,3 @@ OverviewThis project is a comprehensive e-commerce web application built on the 
 | `db.sqlite3`               | Local database file (usually ignored in shared repos)           |
 | `myenv/`                   | Local Python environment (must be ignored in `.gitignore`)      |
 
-## Contribution
-
-Contributions are encouraged! Feel free to fork the repository, raise issues, or submit pull requests with improvements or new features.
-
-## LicenseThis project is licensed under the MIT License (see the LICENSE file for details).
-
-_Thanks for exploring this Django Ecommerce project – ideal for anyone building robust, modular e-commerce websites with user notifications and admin controls!_
-
-[1] https://github.com/veryacademy/django-ecommerce-project/blob/main/README.md
-[2] https://github.com/justdjango/django-ecommerce
-[3] https://www.youtube.com/watch?v=SgdOe2dMYPs
-[4] https://dev.to/sm0ke/django-stripe-open-source-mini-ecommerce-3o5j
-[5] https://www.youtube.com/watch?v=qx9nshX9CQQ
-[6] https://www.reddit.com/r/django/comments/1ff7btw/django_ecommerce_pharmacy_management_my_learning/# E_cart-E_commerce_webite-

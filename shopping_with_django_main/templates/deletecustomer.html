@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+{% load static%}
+{% block content %}
+{% for message in messages %}
+    <h3 style="color:red;"> {{message}} </h3>
+{% endfor %}
+<link rel="stylesheet" href="{%static 'css/styles_2.css' %}">
+<br><br><br><br><br>
+<div class = 'product-control'>
+
+    <a href="{% url 'addcustomer' %}">
+        <div class = "add-product">
+        <br><p align='center'>Add Customer</p>
+        </div>
+    </a>  
+    <a href="{% url 'updatecustomer' %}">
+        <div class = 'update-product'>
+            <br><p align='center'>Update Customer</p>
+        </div>
+    </a>
+    <a href="{%url 'deletecustomer' %}">
+        <div class = 'delete-products'>
+            <br><p align='center'> Delete Customer</p>
+        </div>
+    </a>
+    <a href="{% url 'customerview' %}">
+        <div class = 'product-view'>
+           <br> <p align='center'>Customer View</p>
+        </div>
+    </a>
+</div>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>User Delete</p>
+    <h2></h2>
+</div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="prodectview"><br><br><br>
+    <form action="{%url 'delete_customer' %}" method="POST">
+<table class='prodectview-table' align="center">
+    {% csrf_token %}
+    
+    <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>UserType</th>
+        <th>Action</th>
+        
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user.customerID}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.usertype}}</td>
+        <td><button type ='submit' name='submit' value="{{user.customerID}}" class='button'>Delete</button></td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</div>
+  
+{% endblock %}

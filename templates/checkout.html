@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>CheckOut</p>
+    <h2></h2>
+</div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="headding">
+<h3>Total Amount Payable:<b style="color: #343148; background-color:#F7CAC9; padding:7px; border: 1px #343148 solid;"> ₹  {{total_payable}}</b></h3><br><br>
+</div>
+<div align='center' class='payment'>
+<h5>Please Select Payment Method</h5><br><br>
+<ul>
+    <li><a href="{%url 'payment'%}">Cash On Delivery</a></li>
+    <li><a>Net Banking</a></li>
+    <li><a>UPI</a></li>
+    <li><a>Credit or Debit Card</a></li>
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+<div class = 'product-details' align='center'><br><br><br>
+    {% for message in messages %}
+        <h3 style="color:green;"> {{message}} </h3>
+        {% endfor %}
+        <div class = 'product-control'>
+
+            <a href="{% url 'addproduct' %}"><br>
+                <div class = "add-product">
+                <p>Add Products</p>
+                </div>
+            </a>  
+            <a href="{% url 'updateproduct' %}"><br>
+                <div class = 'update-product'>
+                    <p>Update Product</p>
+                </div>
+            </a>
+            <a href="{%url 'deleteproduct' %}"><br>
+                <div class = 'delete-products'>
+                    <p>Delete Product</p>
+                </div>
+            </a>
+            <a href="{% url 'productview' %}"><br>
+                <div class = 'product-view'>
+                    <p>Product View</p>
+                </div>
+            </a>
+        </div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="prodectdelete"><br><br><br>
+    <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+        <p>UpdateProducts</p>
+        <h2></h2>
+    </div>
+<form action="{%url 'update_product' %}" method="POST">
+    {% csrf_token %}
+<table class='prodectdelete-table' align="center">
+    
+    <tr>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Discription</th>
+        <th>Catogary</th>
+        <th>Stock</th>
+        <th>Update Item</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{product.product_name}}</td>
+        <td>{{product.product_brand}}</td>
+        <td>₹ {{product.product_price}}</td>
+        <td>{{product.product_dis}}</td>
+        <td>{{product.product_catogary}}</td>
+        <td>{{product.product_stock}} nos</td>
+        <td><button type ='submit' name='submit' value="{{product.product_id}}" class='button'>Update</button></td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</div>
+ 
+
+{% endblock %}

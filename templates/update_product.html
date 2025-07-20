@@ -1,0 +1,127 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+<div class = 'product-details' align='center'>
+    {% for message in messages %}
+        <h3 style="color:green;"> {{message}} </h3>
+        {% endfor %}
+        <div class = 'product-control'>
+
+            <a href="{% url 'addproduct' %}">
+                <div class = "add-product">
+                <p>Add Products</p>
+                </div>
+            </a>  
+            <a href="{% url 'updateproduct' %}">
+                <div class = 'update-product'>
+                    <p>Update Product</p>
+                </div>
+            </a>
+            <a href="{%url 'deleteproduct' %}">
+                <div class = 'delete-products'>
+                    <p>Delete Product</p>
+                </div>
+            </a>
+            <a href="{% url 'productview' %}">
+                <div class = 'product-view'>
+                    <p>Product View</p>
+                </div>
+            </a>
+        </div>
+        <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+            <p>Update Products</p>
+            <h2></h2>
+        </div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<form action="{%url 'updateitem' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        
+        {%for item in items %}
+    <tr> 
+        <td>
+    <br><br><br><label for="p_catogary">Product Catogary</label>
+        </td>
+        <td>
+    <select name="p_catogary">
+        <option value="{{item.product_catogary}}">{{item.product_catogary}}</option>
+        <option value="shoe">Shoe</option>
+        <option value="shirt">Shirt</option>
+        <option value="t-shirt">T-shirt</option>
+        <option value="jacket">Jackaet</option>
+        <option value="googles">Googles</option>
+        <option value="pant">Pant</option>
+        <option value="jean">Jeans</option>
+        <option value="joggers">Joggers<option>
+    </select><br><br>
+        </td>
+</tr>
+<tr>
+    <td>
+    <label for="p_brand">Brand:</label>
+    </td>
+<td>
+    <input type="text" name='p_brand' placeholder="brand" value="{{item.product_brand}}"><br><br>
+</td>
+</tr>
+<tr>
+<td>
+    <label for="p_Name">Name</label>
+</td>
+
+<td>
+    <input type="text" name='p_name' placeholder="Product Name" value="{{item.product_name}}" required><br><br>
+</td>
+</tr>
+</tr>
+<td>
+    <label for="p_dis">Description:</label>
+</td>
+<td>
+    <input type="text" name='p_dis' placeholder="Product discription" value="{{item.product_dis}}" class='discription'><br><br>
+</td>
+</tr>
+<tr>
+<td> 
+    <label for="p_price">Price:</label>
+</td>
+<td>
+    <input type="text" name='p_price' placeholder="Price" value= "{{item.product_price}}" required><br><br>
+</td>
+</tr>
+<tr>
+<td>
+    <label for="p_offer">Offer:</label>
+</td>
+
+<td>
+    <input type="checkbox" name ="p_offer" value="{{item.product_offer}}"><br><br>
+</td>
+</tr>
+<tr>
+<td>
+    <label for="stock">Stock:</label>
+</td>
+<td>
+    <input type="number" name='stock' placeholder="Number of Stock" value="{{item.product_stock}}" required><br><br>
+</td>
+
+</tr>
+<tr>
+    <td><label for="ProductID">Product ID</label></td>
+    <td>{{item.product_id}}</td>
+</tr>
+<tr>
+    <td></td>
+
+   <td ><input type="submit" name='submit' value="Change" class='button' ></td> 
+</tr>
+
+{% endfor %}
+</table>
+
+
+</form>
+</div>
+{% endblock %}

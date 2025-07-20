@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content%}
+<br><br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p> Your Orders </p>
+    <h2></h2>
+</div>
+<link rel="stylesheet" href="{%static 'css/styles_3.css' %}">
+<table align="center" style="margin-bottom: 5%;">
+    <tr>
+        <td>Product name</td>
+        <td>Brand</td>
+        <td>Discription</td>
+        <td>Price</td>
+        <td>Orderd Date</td>
+        <td>Status</td>
+        <td>Action Date</td>
+        <td>Order Cancellation</td>
+    
+    </tr>
+
+{% for item in order_item %}
+<tr>
+    <td>{{item.product_name}}</td>
+    <td>{{item.product_brand}}</td>
+    <td>{{item.product_dis}}</td>
+    <td>{{item.product_price}}</td>
+    <td>{{item.ordred_date}}</td>
+    <td>{{item.delivery_ststus}}</td>
+    <td>{{item.dispached_date}}</td>
+    <form action="{%url 'delete_order' %}" method="post">
+        {% csrf_token %}
+    <td><button type="submit" name='delete_order' value="{{item.id}}" class="button">Cancel Order</button></td>
+    </form>
+
+</tr>
+{% endfor %}
+</table>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p> Delivered Items </p>
+    <h2></h2>
+</div>
+<table align="center" style="margin-bottom: 5%;">
+    <tr>
+        <td>Product name</td>
+        <td>Brand</td>
+        <td>Orderd Date</td>
+        <td>Deliverd Date</td>
+        <td>Status</td>
+        
+    
+    </tr>
+
+{% for it in deliverd %}
+<tr>
+    <td>{{it.product_name}}</td>
+    <td>{{it.product_brand}}</td>
+    <td>{{it.ordred_date}}</td>
+    <td>{{it.deliverd_date}}</td>
+    <td>Delivered</td> 
+
+</tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

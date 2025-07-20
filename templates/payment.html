@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{%load static%}
+{% block content %}
+<br><br><br><br><br><br><br>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="headding-2">
+    <div align='center'>
+<h3>Total Amount Payable:<b style="color: #343148; background-color:#F7CAC9; padding:7px; border: 1px #343148 solid;"> ₹  {{total_payable}}</b></h3><br><br>
+
+<!-- <div align='center' class='paymentconfirm'> -->
+    
+<form action="{%url 'paymentconfirmation' %}" method="post">
+    {% csrf_token %}
+    {% for j in user  %}
+    <label for="address"><u>Delivery address:</u></label>
+   <h4>{{j.address_home}}</h4> 
+   <h4>{{j.address_city}}</h4>
+   <h4>{{j.address_state}}</h4>
+   <h4>{{j.address_contry}}</h4>
+   <h4>Phone: {{j.phone}}</h4>
+    <p>Payment Method:  <b>Cash On Delivery</b> </p><br>
+    <a href="{% url 'myprofile' %}">To Change Delivery Address!!!!</a><br><br>
+    <button type="submit" name="submit" class="button" style="padding: 20px; border-radius:5px;">Confirm Payment And Checkout</button>
+    {% endfor %}
+</form>
+</div>
+</div>
+  
+{% endblock %}

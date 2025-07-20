@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>Order Confirmation</p>
+    <h2>Your Order Was Confirmed Wait For Delivery</h2>
+</div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class='order-confirmation' align='center'>
+  <h3>Orderd Items:</h3>
+  
+  {% for i in cartitem %}
+          Item Name:<b>{{i.product_name}}</b>,
+          Brand:<b>{{i.product_brand}}</b>,
+          Price: <b> ₹ {{i.product_price}}</b><br><br>
+         
+       
+  {% endfor %}
+  <h3>Address:</h3>
+  {% for j in user  %}
+    {{j.first_name}},
+    {{j.address_home}},
+    {{j.address_city}},
+    {{j.address_state}},
+    {{j.address_contry}},
+    Phone: {{j.phone}} <br><br>
+    {% endfor%}
+  <h5>Total Payment Amount: <b>{{total_payable}}</b></h5>
+  <h3>Payment Method: <b>Cash On delivary</b></h3>
+
+  
+<br><br><a href="{%url 'homescreen' %}">Return To Shopping</a>
+</div>
+
+  
+{% endblock %}

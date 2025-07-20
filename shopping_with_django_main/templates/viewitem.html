@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load static %}
+{% static "images" as baseurl %}
+{% block content %}
+<br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>Product View</p>
+    <h2></h2>
+</div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+{% for message in messages %}
+    <h6 align='center' style="color:#343148;"> {{message}} </h6>
+{% endfor %}
+<br><br>
+<div class= 'checkoutitem' style="background-color:#F7CAC9 ;">
+    
+   
+   
+<div class='item-sub' style="padding: 20px;background-color:white ;">
+            
+{% for item in selected_item  %}
+<table style=" border:none; margin-bottom: 0%;">
+    <tr>    
+        <td >
+            <h5>Product Name: <b> {{item.product_name}}</b></h5>
+            <img src="{{item.img.url}}" alt="" style="width: 100 px; height:200px"><br><br>
+            <!-- <h5>Product Name: <b> {{item.product_name}}</b></h5> -->
+            <h6>Brand: <b>{{item.product_brand}}</b></h6>
+            <p>Discription: {{item.product_dis}}</p>
+            <h5> <b>₹ {{item.product_price}}</b></h5>
+        </td>
+    </tr>
+
+</table><br>
+<div class="buyingbutton" style="margin-left: 30%;">
+    <p style="padding:10px">Total: ₹  {{item.product_price}}</p>
+    <form action="{%url 'addtocart'%}" method="post">
+        {% csrf_token %}
+        <p class="cart-button"><button type ="submit" name='submit' value='{{item.product_id}}' style="background-color: none; border: none; width: 100px"><a>Add To Cart</a></button></p>
+    </form>
+</div>
+</div>
+
+{% endfor %}
+</div>
+
+{% endblock %}

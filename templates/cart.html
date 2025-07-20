@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{%load static%}
+{% static "images" as baseurl %}
+{% block content %}
+<br><br><br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>Your Cart</p>
+    <h2></h2>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+{% for message in messages %}
+    <h6 align='center' style="color:#343148;"> {{message}} </h6>
+{% endfor %}
+{% if total_payable != 0 %}
+<div class="buyingbutton" style="margin-left: 60%;">
+    <p style="padding:10px">Total: ₹  {{total_payable}}</p>
+    <a href="{%url 'checkout' %}" style="background-color: rgb(236, 236, 148); border-radius: 10px;padding:10px; border:1px #343148 solid"> Proceed To Check Out</a></p> 
+    <p style="display:flexbox; padding:10px"><a href="{%url 'homescreen' %}">Continue shopping </a>  
+
+</div>
+<br><br>
+<div class= 'checkoutitem' style="background-color:#F7CAC9 ;">
+    
+   
+   {% for i in cartitem %} 
+        <div class='item-sub' style="padding: 20px;background-color:white ;">
+            <table style="border: none; margin-bottom: 0%;">
+                <tr>    
+                    <td style="width: 85%">
+                        <h3>Item Name:{{i.product_name}}</h3>
+                        <img src="{{i.img.url}}" alt="" style="width: 40 px; height:80px">
+                        <h5>Brand:{{i.product_brand}}</h5>
+                        <h5 style="float: inline-end;">Price: <b> ₹ {{i.product_price}}</b> </h5>
+                    </td>
+                    <td>
+                        <form action="{%url 'delete_from_cart'%}" method="post">
+                            {% csrf_token %}
+                            <button type ='submit' name='submit' value="{{i.product_id}}" class='button'>Delete item</button>
+                        </form>
+                    </td>   
+                </tr>
+        </table>
+        
+        </div>
+
+    {% endfor%}
+        <div class='item-sub' style=" padding: 20px;background-color:whitesmoke;">
+
+            <h4>Total Payable: <b style="color: #343148; background-color:#F7CAC9; padding:7px; border: 1px #343148 solid;"> ₹  {{total_payable}}</b> </h4><br>
+            <a href="{%url 'checkout' %}" style="background-color: rgb(236, 236, 148); border-radius: 10px;padding:10px; border:1px #343148 solid"> Proceed To Check Out</a></p>
+        </div>
+    {% else %}
+
+    <p align="center">Cart is empty</p>
+
+    {% endif %}
+
+
+    
+    
+</div><br><br><br><br>
+
+
+  
+{% endblock %}

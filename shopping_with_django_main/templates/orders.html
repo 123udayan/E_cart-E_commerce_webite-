@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% load static%}
+{% block content %}
+<br><br><br><br>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p> Dispach Control </p>
+    <h2></h2>
+</div>
+<link rel="stylesheet" href="{%static 'css/styles_3.css' %}">
+<div class='item-table' >
+<table align="center">
+    <tr style="color: blue;">
+        <td>Item Name</td>
+        <td>Price</td>
+        <td>Brand</td>
+        <td>Discription</td>
+        <td>Customer Name</td>
+        <td>Customer Address</td>
+        <td>Customer Phone</td>
+        <td>Ordered Date</td>
+        <td>Action</td>
+        <td>Action Date</td>
+        <td>Status Update</td>
+        
+
+    </tr>
+    
+{% for item in items %}
+<tr style="font-size: small;">
+    <td>{{item.product_name}}</td>
+    <td>{{item.product_price}}</td>
+    <td>{{item.product_brand}}</td>
+    <td>{{item.product_dis}}</td>
+    <td>{{item.customer_name}}</td>
+    <td>{{item.customer_address}}</td>
+    <td>{{item.customer_phone}}</td>
+    <td>{{item.ordred_date}}</td>
+    <td>{{item.delivery_ststus }}</td>
+    <td>{{item.dispached_date}}</td>
+    <td>
+        <form action="{%url 'dispach_action1' %}" method="post">
+            {% csrf_token %}
+        <button type ='submit' name = 'accept' value="{{item.id}}" class="button">Order Accepted</button><br><br>
+        </form>
+        <form action="{%url 'dispach_action2' %}" method="post">
+            {% csrf_token %}
+            <button type ='submit' name = 'dispach' value="{{item.id}}" class="button">Dispached</button> <br><br>
+        </form>
+        <form action="{%url 'dispach_action3' %}" method="post">
+            {% csrf_token %}
+            <button type ='submit' name = 'outdelivery' value="{{item.id}}" class="button">Out for Delivery</button> <br> <br>
+        </form>
+        <form action="{%url 'dispach_action4' %}" method="post">
+            {% csrf_token %}
+            <button type ='submit' name = 'deliverd' value="{{item.id}}" class="button">Deliverd</button><br><br>
+        </form>
+        <form action="{%url 'delete_order_admin' %}" method="post">
+            {% csrf_token %}
+        <button type="submit" name='delete_order' value="{{item.id}}" class="button">Cancel Order</button>
+        </form>
+    </td>
+    
+
+</tr>
+{% endfor %}
+</table>
+</div>
+
+
+  
+{% endblock%}

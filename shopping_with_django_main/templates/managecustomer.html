@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{%static 'css/styles_2.css' %}">
+<br><br><br><br><br>
+<div class = 'product-control'>
+
+    <a href="{% url 'addcustomer' %}">
+        <div class = "add-product">
+        <br><p align='center'>Add Customer</p>
+        </div>
+    </a>  
+    <a href="{% url 'updatecustomer' %}">
+        <div class = 'update-product'>
+            <br><p align='center'>Update Customer</p>
+        </div>
+    </a>
+    <a href="{%url 'deletecustomer' %}">
+        <div class = 'delete-customer'>
+            <br><p align='center'> Delete Customer</p>
+        </div>
+    </a>
+    <a href="{% url 'customerview' %}">
+        <div class = 'product-view'>
+           <br> <p align='center'>Customer View</p>
+        </div>
+    </a>
+</div>
+
+  
+{% endblock %}

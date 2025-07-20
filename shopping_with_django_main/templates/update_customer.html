@@ -1,0 +1,114 @@
+{% extends "index.html" %}
+{% load static%}
+{% block content %}
+
+<link rel="stylesheet" href="{%static 'css/styles_2.css' %}">
+<br><br><br><br><br>
+<div class = 'product-control'>
+
+    <a href="{% url 'addcustomer' %}">
+        <div class = "add-product">
+        <br><p align='center'>Add Customer</p>
+        </div>
+    </a>  
+    <a href="{% url 'updatecustomer' %}">
+        <div class = 'update-product'>
+            <br><p align='center'>Update Customer</p>
+        </div>
+    </a>
+    <a href="{%url 'deletecustomer' %}">
+        <div class = 'delete-products'>
+            <br><p align='center'> Delete Customer</p>
+        </div>
+    </a>
+    <a href="{% url 'customerview' %}">
+        <div class = 'product-view'>
+           <br> <p align='center'>Customer View</p>
+        </div>
+    </a>
+</div>
+
+
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="prodectview"><br><br><br>
+    <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+        <p>Add Customer</p>
+        <h2></h2>
+    </div>
+    {% for message in messages %}
+        <h3 align='center' style="color:green;"> {{message}} </h3>
+    {% endfor %}
+
+    <form action="{%url 'updateuser' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table align="center">
+            
+            {%for user in users %}
+        <tr> 
+            <td>
+        <br><br><br><label for="f_name">First Name</label>
+            </td>
+            <td>
+            <input type="text" name='f_name' value="{{user.first_name}}"><br><br>
+            </td>
+    </tr>
+    <tr>
+        <td>
+        <label for="l_name">Last Name</label>
+        </td>
+    <td>
+        <input type="text" name='l_name' value="{{user.last_name}}"><br><br>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <label for="phone">Phone Number</label>
+    </td>
+    
+    <td>
+        <input type="text" name='phone' value="{{user.phone}}" required><br><br>
+    </td>
+    </tr>
+    </tr>
+    <td>
+        <label for="email">Email</label>
+    </td>
+    <td>
+        <input type="text" name='email' value="{{user.email}}" class='discription'><br><br>
+    </td>
+    </tr>
+    <tr>
+    <td> 
+        <label for="u_name">User Name</label>
+    </td>
+    <td>
+        <input type="text" name='u_name'  value= "{{user.username}}" required><br><br>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <label for="u_type">User Type</label>
+    </td>
+    
+    <td>
+        <input type="text" name ="u_type" value="{{user.usertype}}"><br><br>
+    </td>
+    </tr>
+    
+    <tr>
+        <td><label for="ProductID">User ID</label></td>
+        <td>{{user.ustomerID}}</td>
+    </tr>
+    <tr>
+        <td></td>
+    
+       <td ><input type="submit" name='submit' value="Change" class='button' ></td> 
+    </tr>
+    
+    {% endfor %}
+    </table>
+    
+    
+    </form>
+    </div>
+    {% endblock %}

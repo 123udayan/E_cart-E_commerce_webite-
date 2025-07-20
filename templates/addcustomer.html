@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% load static%}
+{% block content %}
+{% for message in messages %}
+    <h3 style="color:red;"> {{message}} </h3>
+{% endfor %}
+<link rel="stylesheet" href="{%static 'css/styles_2.css' %}">
+<br><br><br><br><br>
+<div class = 'product-control'>
+
+    <a href="{% url 'addcustomer' %}">
+        <div class = "add-product">
+        <br><p align='center'>Add Customer</p>
+        </div>
+    </a>  
+    <a href="{% url 'updatecustomer' %}">
+        <div class = 'update-product'>
+            <br><p align='center'>Update Customer</p>
+        </div>
+    </a>
+    <a href="{%url 'deletecustomer' %}">
+        <div class = 'delete-products'>
+            <br><p align='center'> Delete Customer</p>
+        </div>
+    </a>
+    <a href="{% url 'customerview' %}">
+        <div class = 'product-view'>
+           <br> <p align='center'>Customer View</p>
+        </div>
+    </a>
+</div>
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p>Add New Customer</p>
+    <h2></h2>
+</div>
+{% for message in messages %}
+    <h3 style="color: green;" align='center'> {{message}} </h3>
+{% endfor %}
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+
+    <form action="{%url 'add_customer' %}" method="POST">
+            {%csrf_token%}
+        <table align="center">
+            <tr>
+                <td><input type="text" name='fname' placeholder="First Name" required></td>
+                <td> <input type="text" name='lname' placeholder="Last Name" required></td><br><br>
+            </tr>
+            <tr>
+                <td><input type="number" name='phone' placeholder="Phone number" required></td>
+                <td><input type="email" name="email" placeholder="email" required></td><br><br>
+            </tr>
+            <tr>
+                <td><input type="text" name="uname" placeholder="User Name"required></td>
+                <td><input type="password" name="password1" placeholder="Password" required> </td><br><br> 
+            </tr>
+            <tr>
+                <td><input type="password" name="password2" placeholder="confirm Password" required></td><br><br>
+            <div class="button">
+               <tr><td></td><td ><input type="submit" name='submit' value = "Add" style="background-color: #343148; color:#F7CAC9"> </td></tr>
+            </div> 
+        
+            </tr>
+
+        </table>
+    </form>
+    {% endblock %}

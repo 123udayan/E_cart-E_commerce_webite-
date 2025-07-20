@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{%load static%}
+{% block content %}
+<br><br><br><br>
+<link rel="stylesheet" href="{%static 'css/styles_3.css' %}">
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <p> Delivered Items </p>
+    <h2></h2>
+</div>
+<table align="center" style="margin-bottom: 5%;">
+    <tr>
+        <td>Customer name</td>
+        <td>Product name</td>
+        <td>Brand</td>
+        <td>Orderd Date</td>
+        <td>Deliverd Date</td>
+        <td>Status</td>
+        
+    
+    </tr>
+
+{% for it in delivery %}
+<tr>
+    <td>{{it.customer_name}}</td>
+    <td>{{it.product_name}}</td>
+    <td>{{it.product_brand}}</td>
+    <td>{{it.ordred_date}}</td>
+    <td>{{it.deliverd_date}}</td>
+    <td>Delivered</td> 
+
+</tr>
+{% endfor %}
+</table>
+  
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+<div class = 'product-details' align='center'><br><br><br>
+    {% for message in messages %}
+        <h3 style="color:green;"> {{message}} </h3>
+        {% endfor %}
+        <div class = 'product-control'>
+
+            <a href="{% url 'addproduct' %}"><br>
+                <div class = "add-product">
+                <p>Add Products</p>
+                </div>
+            </a>  
+            <a href="{% url 'updateproduct' %}"><br>
+                <div class = 'update-product'>
+                    <p>Update Product</p>
+                </div>
+            </a>
+            <a href="{%url 'deleteproduct' %}"><br>
+                <div class = 'delete-products'>
+                    <p>Delete Product</p>
+                </div>
+            </a>
+            <a href="{% url 'productview' %}"><br>
+                <div class = 'product-view'>
+                    <p>Product View</p>
+                </div>
+            </a>
+        </div>
+<link rel="stylesheet" href="{% static 'css/styles_3.css' %}">
+<div class="prodectview"><br><br><br>
+<table class='prodectview-table' align="center">
+    <h3>Listed Products</h3>
+    <tr>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Discription</th>
+        <th>Catogary</th>
+        <th>Stock</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{product.product_name}}</td>
+        <td>{{product.product_brand}}</td>
+        <td>₹ {{product.product_price}}</td>
+        <td>{{product.product_dis}}</td>
+        <td>{{product.product_catogary}}</td>
+        <td>{{product.product_stock}} nos</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}
